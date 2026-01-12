@@ -10,6 +10,7 @@ const port = 8080;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
 
 // Mongoose connection
 const mongo_url = "mongodb://127.0.0.1:27017/airbnb"
@@ -39,5 +40,9 @@ app.get("/listings", async (req, res) => {
     res.render("listing/index", { allListings });
 });
 
-
-app.get("/listings:id")
+// Shoow routes
+app.get("/listings/:id", async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listing/show", { listing });
+})
