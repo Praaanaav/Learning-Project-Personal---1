@@ -4,14 +4,15 @@ const Schema = mongoose.Schema;
 const ListingSchema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     description: String,
-    image: String,
+    image: Object,
     price: Number,
     location: String,
     country: String
-})
+});
+
 
 
 const Listing = mongoose.model("Listing", ListingSchema);
