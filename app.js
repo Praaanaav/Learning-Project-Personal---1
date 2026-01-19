@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override')
 
 
 const Listing = require('./models/listing');
@@ -12,6 +13,7 @@ const port = 8080;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"))
 
 // Mongoose connection
 const mongo_url = "mongodb://127.0.0.1:27017/airbnb"
@@ -46,9 +48,8 @@ app.get("/listings/new", (req, res) => {
     res.render("listing/new.ejs");
 })
 
-app.post("/listings", async(req, res) => {
+app.post("/listings", async (req, res) => {
     const newlisting = new Listing(req.body.listing)
-    console.log(newlisting);
     await newlisting.save()
     res.redirect("/listings")
 
@@ -61,3 +62,17 @@ app.get("/listings/:id", async (req, res) => {
     res.render("listing/show", { listing });
 })
 
+// Edit and Update route
+app.get("/listings/:id/edit", async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listing/edit", { listing });
+})
+
+// Update route
+
+app.put("/listings/:id", async (req, res) => {
+    let { id } = req.params;
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing })
+    res.redirect(`/listings/${id}`)
+})
