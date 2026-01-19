@@ -4,7 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 
-const Listing = require('./models/listing')
+const Listing = require('./models/listing');
+const { log } = require('console');
 
 const port = 8080;
 
@@ -40,9 +41,23 @@ app.get("/listings", async (req, res) => {
     res.render("listing/index", { allListings });
 });
 
+// Add new property
+app.get("/listings/new", (req, res) => {
+    res.render("listing/new.ejs");
+})
+
+app.post("/listings", async(req, res) => {
+    const newlisting = new Listing(req.body.listing)
+    console.log(newlisting);
+    await newlisting.save()
+    res.redirect("/listings")
+
+})
+
 // Shoow routes
 app.get("/listings/:id", async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listing/show", { listing });
 })
+
