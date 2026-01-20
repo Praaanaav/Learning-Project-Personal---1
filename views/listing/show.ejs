@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('Layout/boilerplate') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing details</title>
-</head>
+    <body>
+        <h2>Listing Details</h2>
+        <h4>Title: <%= listing.title %>
+        </h4>
+        <h4>Description: <%= listing.description %>
+        </h4>
+        <h4>Price: ₹<%= listing.price.toLocaleString("en-IN") %>
+        </h4>
+        <h4>Country: <%= listing.location %>
+                <h4>Country: <%= listing.country %>
+                </h4>
 
-<body>
-    <h2>Listing Details</h2>
-    <h4>Title: <%= listing.title %>
-    </h4>
-    <h4>Description: <%= listing.description %>
-    </h4>
-    <h4>Price: ₹<%= listing.price.toLocaleString("en-IN") %>
-    </h4>
-    <h4>Country: <%= listing.location %>
-            <h4>Country: <%= listing.country %>
-            </h4>
-
-            <img src="<%= listing.image.url %>" alt="<%= listing.title %>" width="300" /><br><br>
-            <a href="/listings/<%= listing.id %>/edit">EDIT</a><br><br>
-            <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                <button>Delete</button>
-            </form>
-</body>
-
-</html>
+                <img src="<%= listing.image.url %>" alt="<%= listing.title %>" width="300" /><br><br>
+                <a href="/listings/<%= listing.id %>/edit">EDIT</a><br><br>
+                <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+                    <button>Delete</button>
+                </form>
+    </body>

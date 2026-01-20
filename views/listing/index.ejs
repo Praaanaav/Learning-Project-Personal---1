@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('Layout/boilerplate') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airbnb</title>
-</head>
+<h3>All Listings</h3>
 
-<body>
+<ul>
+    <% for (let listing of allListings) { %>
+        <li>
+            <a href="/listings/<%= listing._id %>">
+                <%= listing.title %>
+            </a>
+        </li>
+    <% } %>
+</ul>
 
-    <h3>All Listings</h3>
-
-    <ul>
-        <% for (let listing of allListings) { %>
-            <li>
-                <a href="/listings/<%= listing._id %>">
-                    <%= listing.title %>
-                </a>
-            </li>
-            <% } %>
-    </ul>
-    <form action="/listings/new" method="get">
-        <button>CREATE NEW LISTING</button>
-    </form>
-</body>
-
-</html>
+<form action="/listings/new" method="get">
+    <button>CREATE NEW LISTING</button>
+</form>
