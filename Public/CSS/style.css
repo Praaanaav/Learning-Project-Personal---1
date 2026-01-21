@@ -11,3 +11,40 @@
 .nav-link {
     color: #222222 !important;
 }
+
+/* footer */
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+    color: #222222;
+}
+
+.f-info {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    background-color: #ebebeb;
+}
+
+.f-info-links,
+.f-info-social,
+.f-info-brand {
+    width: 100%;
+    display: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-social i {
+    margin-right: .5rem;
+    margin-left: .5rem;
+    font-size: 1.2rem;
+}
