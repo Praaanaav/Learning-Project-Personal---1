@@ -1,11 +1,19 @@
 <% layout('Layout/boilerplate') %>
     <h3>All Listings</h3>
-    <ul>
-        <% for (let listing of allListings) { %>
-            <li>
-                <a href="/listings/<%= listing._id %>">
+
+    <% for (let listing of allListings) { %>
+        <div class="card" style="width: 20rem;">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image">
+            <div class="card-body">
+                <h5 class="card-title">
                     <%= listing.title %>
+                </h5>
+                <p class="card-text">
+                    <%= listing.description %>
+                </p>
+                <a href="/listings/<%= listing._id %>" class="btn btn-primary">
+                    View Details
                 </a>
-            </li>
-            <% } %>
-    </ul>
+            </div>
+        </div>
+        <% } %>
