@@ -1,3 +1,8 @@
+body {
+    overflow-x: hidden;
+}
+
+
 .navbar {
     height: 5rem;
     background: #fff;
@@ -49,9 +54,34 @@
     font-size: 1.2rem;
 }
 
-.card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
+
+.listing-card {
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+
+.listing-card:hover {
+    opacity: 1.2;
+    background-color: #ebebeb;
+}
+
+.listing-card img {
+    border-radius: 20px 20px 0 0 !important;
+    display: block;
+}
+
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+}
+
+.listing-link {
+    text-decoration: none;
+    color: #222222;
+}
+
+.listing-link:hover {
+    color: #222222;
 }
