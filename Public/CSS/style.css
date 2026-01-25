@@ -5,6 +5,7 @@ body {
     min-height: 100vh;
 }
 
+
 .container {
     flex: 1;
 }
@@ -80,7 +81,7 @@ body {
 .card-img-top {
     height: 180px;
     object-fit: cover;
-    border-radius: 16px 16px 0 0;
+    border-radius: 1rem !important;
 }
 
 .listing-link {
@@ -95,5 +96,17 @@ body {
 .addbtn {
     background-color: #fe424d !important;
     border: none !important;
+}
 
+.show-img {
+    height: 30vh !important;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btns {
+    display: flex;
 }

@@ -1,20 +1,44 @@
 <% layout('Layout/boilerplate') %>
 
-    <body>
-        <h2>Listing Details</h2>
-        <h4>Title: <%= listing.title %>
-        </h4>
-        <h4>Description: <%= listing.description %>
-        </h4>
-        <h4>Price: ₹<%= listing.price.toLocaleString("en-IN") %>
-        </h4>
-        <h4>Country: <%= listing.location %>
-                <h4>Country: <%= listing.country %>
-                </h4>
 
-                <img src="<%= listing.image.url %>" alt="<%= listing.title %>" width="300" /><br><br>
-                <a href="/listings/<%= listing.id %>/edit">EDIT</a><br><br>
-                <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                    <button>Delete</button>
-                </form>
-    </body>
+
+    <div class="mt-3 ">
+        <div class="col-8 offset-3">
+            <h3>Listing Details</h3>
+        </div>
+        <div class="card col-6 offset-3 border-0 show-card">
+            <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="...">
+            <div class="card-body p-0">
+                <p class="card-text mb-1">
+                    <b>
+                        <%= listing.title %>
+                    </b>
+                <ul class="list-unstyled">
+                    <li class="mb-1"><strong>Title:</strong>
+                        <%= listing.title %>
+                    </li>
+                    <li class="mb-1"><strong>Description:</strong>
+                        <%= listing.description %>
+                    </li>
+                    <li class="mb-1"><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %>
+                    </li>
+                    <li class="mb-1"><strong>Location:</strong>
+                        <%= listing.location %>
+                    </li>
+                    <li class="mb-1"><strong>Country:</strong>
+                        <%= listing.country %>
+                    </li>
+                </ul>
+                </p>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="btns mt-4">
+        <a href="/listings/<%= listing.id %>/edit" class="btn btn-dark rounded-3 px-4 col-1 offset-3">Edit</a>
+        <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+            <button class="btn btn-dark rounded-3 px-4 addbtn  offset-4">Delete</button>
+        </form>
+    </div>
